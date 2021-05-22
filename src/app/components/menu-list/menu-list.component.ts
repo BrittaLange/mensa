@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuListComponent implements OnInit {
 
-  title = "Menüliste";
+  title = "Menü-Liste";
+
+  today: number = Date.now();
 
   meals = [
     {"meal": "Essen 1", "name": "Pommes frites", "price": "2.00" },
