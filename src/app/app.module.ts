@@ -4,16 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { MenuListComponent } from './menu-list/menu-list.component';
-import { MenuComponent } from './menu/menu.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { MenuListComponent } from './components/menu-list/menu-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    MenuListComponent,
-    MenuComponent
+    MenuListComponent
   ],
   imports: [
     BrowserModule,
