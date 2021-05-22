@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
+  location: string = "Cafeteria Mensa 2";
+
   constructor() { }
 
   ngOnInit(): void {
