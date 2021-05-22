@@ -12,11 +12,12 @@ export class MenuListComponent implements OnInit {
 
   today: number = Date.now();
 
-  meals = [];
+  meals = [] as any;
 
   constructor(private service: MensaService) { }
 
   ngOnInit(): void {
+    this.meals = this.service.getMeals();
   }
 
 }
