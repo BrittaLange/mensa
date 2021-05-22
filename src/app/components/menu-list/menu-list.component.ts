@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MensaService } from 'src/app/services/mensa.service';
 
 @Component({
   selector: 'app-menu-list',
@@ -11,14 +12,9 @@ export class MenuListComponent implements OnInit {
 
   today: number = Date.now();
 
-  meals = [
-    {"meal": "Essen 1", "name": "Pommes frites", "price": "2.00" },
-    {"meal": "Essen 2", "name": "Hähnchenschnitzel mit Champignonsauce und Pommes frites", "price": "5.60" },
-    {"meal": "Essen 3", "name": "Currywurst mit Currysauce 1997 classic und Pommes frites", "price": "5.60" },
-    {"meal": "Essen 4", "name": "Gebackenes Seelachsfilet mit Remoulade und Kartoffelsalat", "price": "5.80" }
-  ];
+  meals = [];
 
-  constructor() { }
+  constructor(private service: MensaService) { }
 
   ngOnInit(): void {
   }
