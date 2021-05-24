@@ -2,15 +2,13 @@
     <h2>{{ title }} vom {{ today |date }}</h2>
     <table class="table">
         <thead>
-            <th>Menü</th>
             <th>Essen</th>
             <th>Preis Gäste</th>
         </thead>
         <tbody>
-            <tr *ngFor="let meal of meals">
-                <td>{{ meal.meal }}</td>
-                <td>{{ meal.name }}</td>
-                <td>{{ meal.price | currency: 'EUR' }}</td>
+            <tr *ngFor="let menu of menus">
+                <td>{{ menu.name }}</td>
+                <td>{{ menu.price }}</td>
             </tr>
         </tbody>
     </table>
