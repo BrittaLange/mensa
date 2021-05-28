@@ -22,23 +22,25 @@ export class MenuListComponent implements OnInit {
   prices: string [] = [];
 
   menus =  [] as any;
+/*
+  constructor(private service: JsonService) {
+  }
 
-
+ ngOnInit(): void {
+   this.menus = this.service.getListOfMeals();
+   console.log(this.menus);
+   console.log(typeof(this.menus));
+ }
+*/
   constructor(private service: MensaService) {
-
    }
 
   ngOnInit(): void {
-    /*this.meals = this.service.getMeals();
-    this.prices = this.service.getPrice();
-    this.menus.name = this.meals;
-    this.menus.price = this.prices;
-    console.log(this.menus);
-*/
-    this.menus = this.service.getMenus();
+    console.log('hey!');
+    this.menus = this.service.getData();
     console.log(this.menus);
     console.log(typeof(this.menus));
   }
-  
+
 
 }
