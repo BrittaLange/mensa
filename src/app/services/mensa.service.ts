@@ -10,14 +10,6 @@ import { Menu } from '../model/menu';
 })
 export class MensaService {
 
-  /*
-  meals = [
-    {"meal": "Essen 1", "name": "Pommes frites", "price": "2.00" },
-    {"meal": "Essen 2", "name": "Hähnchenschnitzel mit Champignonsauce und Pommes frites", "price": "5.60" },
-    {"meal": "Essen 3", "name": "Currywurst mit Currysauce 1997 classic und Pommes frites", "price": "5.60" },
-    {"meal": "Essen 4", "name": "Gebackenes Seelachsfilet mit Remoulade und Kartoffelsalat", "price": "5.80" }
-  ];
-*/
 /*
   json = {
     "announcements":[],
@@ -38,12 +30,9 @@ export class MensaService {
   resultPrices = [];
   resultMeals = [];
 
-  menu = new Menu("lane1", "essen1", "2.00");
 
   menus = [] as any;
-  mealArr: string[] = [];
-  priceArr: string[] = [];
-  laneArr: string[] = [];
+
 
   private url = "https://sls.api.stw-on.de/v1/location/106/menu/2021-05-26?time=noon";
 
@@ -65,20 +54,6 @@ export class MensaService {
       }  
     
     });
-    return this.menus;
-  }
-
-  public getMenus() {
-    this.getData();
-    //this.getLane();
-    //this.getMeals();
-    //this.getPrice();
-
-    //console.log(this.mealArr.length);
-    for (let i = 0; i < this.resultMeals.length; i++){
-      this.menus[i] = new Menu(this.resultLanes[i], this.resultMeals[i], this.resultPrices[i]);
-      console.log(this.menus[i]);
-    }  
     return this.menus;
   }
 
@@ -107,25 +82,5 @@ export class MensaService {
             this.findProperty(rootObj[elements], objToFind, label, result);
         }          
     }
-};
-
-
-
-  
-// Todo: name aus lane für 1. Spalte (Kennzeichnung für Essen oder Beilage)
-
-  private getLane() {
-    //this.laneArr = this.json.meals.map(item => item.lane.name);
-  }
-
-  private getMeals() {
-    //this.mealArr = this.json.meals.map(item => item.name);
-    //return this.json.meals.map(item => item.name);
-  }
-
-  private getPrice() {
-    //this.priceArr = this.json.meals.map(item => item.price.guest);
-    //return this.json.meals.map(item => item.price.guest);
-  }
-
+  };
 }
