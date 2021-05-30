@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Meals } from '../model/meals';
 import { Menu } from '../model/menu';
@@ -25,19 +26,35 @@ export class MensaService {
 */
 
   json:Meals[] = [];
-
+  menus = [] as any;
+  resultMeals = [];
   resultLanes = [];
   resultPrices = [];
-  resultMeals = [];
 
-
-  menus = [] as any;
-
-
-  private url = "https://sls.api.stw-on.de/v1/location/106/menu/2021-05-26?time=noon";
-
-  constructor(private http: HttpClient) { }
+  idOfLocation: number = 106;
+  //time: string = "noon";
   
+  DateObj = new Date();
+
+  today = this.DateObj.getFullYear() + '-' + ('0' + (this.DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + this.DateObj.getDate()).slice(-2);
+  
+  getLocation$: Observable<any>;
+  private locusTempus = new Subject<any>();
+
+  private url1 = "https://sls.api.stw-on.de/v1/location/"+ this.idOfLocation + "/menu/?time=noon";
+
+  private url = "https://sls.api.stw-on.de/v1/location/106/menu/2021-05-31?time=noon";
+
+  constructor(private http: HttpClient) {
+    this.getLocation$ = this.locusTempus.asObservable();
+    console.log(this.getLocation$);
+   }
+
+   public getLocation(locus: any){
+    console.log(locus);
+    this.locusTempus.next(locus);
+  }
+
   public getData() {
     this.http.get(this.url).toPromise().then(data => {
       //console.log(data);
@@ -50,9 +67,8 @@ export class MensaService {
       console.log(this.resultMeals);
       for (let i = 0; i < this.resultMeals.length; i++){
         this.menus[i] = new Menu(this.resultLanes[i], this.resultMeals[i], this.resultPrices[i]);
-        console.log(this.menus[i]);
-      }  
-    
+        //console.log(this.menus[i]);
+      }   
     });
     return this.menus;
   }
@@ -68,14 +84,14 @@ export class MensaService {
                 //console.log(rootObj);
                 //console.log(elements);
                 if(Array.isArray(rootObj[elements])){
-                    console.log('ich bin ein array ');
+                    //console.log('ich bin ein array ');
                     for(let i = 0; i < rootObj[elements].length; i++){
                         //console.log(rootObj[elements][i][label]);
                         result.push(rootObj[elements][i][label]);
                     }
                 }
                 else{  
-                    console.log('ich bin kein array');
+                    //console.log('ich bin kein array');
                     result.push(rootObj[elements][label]);
                 }
             }
