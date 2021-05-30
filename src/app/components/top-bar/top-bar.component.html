@@ -1,3 +1,30 @@
-<div class="container">
-    <button class="btn btn-danger bt-sm">{{ location }}</button>
+<div class="container top-bar bg-warning">
+    <div class="row">
+        <div class="col border">
+            <button class="btn btn-outline-danger bt-sm" (click)="setLocation(locMensa1)">{{ locMensa1 }}</button>
+        </div>
+        <div class="col border">
+            <button class="btn btn-outline-danger bt-sm" (click)="setLocation(locMensa2)">{{ locMensa2 }}</button>
+        </div>
+        <div class="col border">
+            <button class="btn btn-danger bt-sm" (click)="setLocation(locCafeMensa2)">{{ locCafeMensa2 }}</button>
+        </div>
+      </div>
+      <!--div class="row">
+        <div class="col border">
+            <button class="btn btn-outline-danger bt-sm" (click)="setLocation(locMensa1)">Montag</button>
+        </div>
+        <div class="col border">
+            <button class="btn btn-danger bt-sm" (click)="setLocation(locMensa2)">Dienstag</button>
+        </div>
+        <div class="col border">
+            <button class="btn btn-danger bt-sm" (click)="setLocation(locCafeMensa2)">Mittwoch</button>
+        </div>
+        <div class="col border">
+            <button class="btn btn-danger bt-sm" (click)="setLocation(locCafeMensa2)">Donnerstag</button>
+        </div>
+        <div class="col border">
+            <button class="btn btn-danger bt-sm" (click)="setLocation(locCafeMensa2)">Freitag</button>
+        </div>
+      </div-->
 </div>
