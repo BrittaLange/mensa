@@ -11,6 +11,8 @@ export class MenuListComponent implements OnInit {
 
   title = "Menü-Liste";
 
+  public today: number = Date.now();
+
   menus =  [] as any;
 
   // Wenn top-bar die Location sendet, muss die Methode getData muss vom Service gepusht werden.
@@ -23,5 +25,5 @@ export class MenuListComponent implements OnInit {
     this.menus = this.service.getData();
     console.log(this.menus);
     console.log(typeof(this.menus));
-  }
+  }  
 }
