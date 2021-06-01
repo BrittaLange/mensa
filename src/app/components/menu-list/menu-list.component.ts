@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IMeals } from 'src/app/model/meals';
 
 import { MensaService } from 'src/app/services/mensa.service';
 
@@ -12,22 +11,17 @@ export class MenuListComponent implements OnInit {
 
   title = "Menü-Liste";
 
-  public today: number = Date.now();
-
   menus =  [] as any;
 
-  // Wenn top-bar die Location sendet, muss die menu-list getData ausführen oder getData muss vom Service gepusht werden.
+  // Wenn top-bar die Location sendet, muss die Methode getData muss vom Service gepusht werden.
 
   constructor(private service: MensaService) {
    }
 
   ngOnInit(): void {
-
+    console.log('init menulist');
     this.menus = this.service.getData();
     console.log(this.menus);
     console.log(typeof(this.menus));
-    
   }
-
-  
 }
