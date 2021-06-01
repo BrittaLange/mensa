@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Meals } from '../model/meals';
+
+import { IMeals } from '../model/meals';
 import { Menu } from '../model/menu';
+import { UrlService } from './url.service';
 
 // Decorator that marks a class as available to be provided and injected as a dependency.(https://angular.io/api/core/Injectable)
 @Injectable({
@@ -25,39 +25,19 @@ export class MensaService {
       {"id":15021,"date":"2021-05-26","name":"Pommes frites","price":{"student":"0.80","employee":"1.00","guest":"1.00"},"location":{"id":106,"name":"Cafeteria Mensa 2 TU BS","address":{"line1":"Cafeteria Mensa 2 TU BS","line2":null,"street":"Beethovenstra\u00dfe 15","zip":"38106","city":"Braunschweig"},"opening_hours":[{"time":"noon","start_day":1,"end_day":5,"start_time":"11:00:00","end_time":"14:15:00"},{"time":"morning","start_day":1,"end_day":5,"start_time":"08:00:00","end_time":"11:00:00"}]},"time":"noon","lane":{"id":160,"name":"Beilage"},"tags":{"categories":[{"id":"VEGA","name":"Vegan"}],"allergens":[],"additives":[],"special":[]},"special_tags":["Deprecated. Use tags\u2192special instead."]}]};
 */
 
-  json:Meals[] = [];
+  json:IMeals[] = [];
   menus = [] as any;
   resultMeals = [];
   resultLanes = [];
   resultPrices = [];
 
-  idOfLocation: number = 106;
-  //time: string = "noon";
-  
-  DateObj = new Date();
-
-  today = this.DateObj.getFullYear() + '-' + ('0' + (this.DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + this.DateObj.getDate()).slice(-2);
-  
-  getLocation$: Observable<any>;
-  private locusTempus = new Subject<any>();
-
-  private url1 = "https://sls.api.stw-on.de/v1/location/"+ this.idOfLocation + "/menu/?time=noon";
-
-  private url = "https://sls.api.stw-on.de/v1/location/106/menu/2021-05-31?time=noon";
-
-  constructor(private http: HttpClient) {
-    this.getLocation$ = this.locusTempus.asObservable();
-    console.log(this.getLocation$);
-   }
-
-   public getLocation(locus: any){
-    console.log(locus);
-    this.locusTempus.next(locus);
+  constructor(private http: HttpClient, private urlservice: UrlService) {
   }
 
+  // Data send by top-bar, recieved by menu-list
+
   public getData() {
-    this.http.get(this.url).toPromise().then(data => {
-      //console.log(data);
+    this.http.get(this.urlservice.getUrl()).toPromise().then(data => {
       this.json = <any>data;
       //console.log(this.json);
       this.findProperty(this.json, 'lane', 'name', this.resultLanes);
@@ -76,7 +56,6 @@ export class MensaService {
   private findProperty(rootObj: any, objToFind: any, label: any, result:any[]) {        
 
     for(var elements in rootObj){
-
         if(typeof rootObj[elements] === 'object') 
         {
             if (elements === objToFind){

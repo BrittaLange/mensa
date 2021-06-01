@@ -1,5 +1,5 @@
 
-export interface Meals {
+export interface IMeals {
 
     announcements: any[],
     meals: IMeal[]
