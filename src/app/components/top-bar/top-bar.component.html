@@ -1,13 +1,13 @@
 <div class="container top-bar bg-warning">
     <div class="row">
-        <div class="col border">
-            <button class="btn btn-outline-danger bt-sm" (click)="setLocation(mensa1)">{{ mensa1.location }}</button>
+        <div class="col">
+            <button class="btn input-block-level form-control" [ngClass]="statusMensa1 ? 'btn-danger' : 'btn-outline-danger'" (click)="setLocation(mensa1)">{{ mensa1.location }}</button>
         </div>
-        <div class="col border">
-            <button class="btn btn-outline-danger bt-sm" (click)="setLocation(mensa2)">{{ mensa2.location }}</button>
+        <div class="col">
+            <button class="btn input-block-level form-control" [ngClass]="statusMensa2 ? 'btn-danger' : 'btn-outline-danger'" (click)="setLocation(mensa2)">{{ mensa2.location }}</button>
         </div>
-        <div class="col border">
-            <button class="btn btn-danger bt-sm" (click)="setLocation(cafeMensa2)">{{ cafeMensa2.location }}</button>
+        <div class="col">
+            <button class="btn input-block-level form-control" [ngClass]="statusCafeMensa2 ? 'btn-danger' : 'btn-outline-danger'" (click)="setLocation(cafeMensa2)">{{ cafeMensa2.location }}</button>
         </div>
       </div>
       <!--div class="row">
