@@ -24,8 +24,8 @@ export class TopBarComponent implements OnInit {
   statusMensa2: boolean;
   statusCafeMensa2: boolean;
 
-  DateObj = new Date();
-  today = this.DateObj.getFullYear() + '-' + ('0' + (this.DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + this.DateObj.getDate()).slice(-2);
+  //DateObj = new Date();
+  //today = this.DateObj.getFullYear() + '-' + ('0' + (this.DateObj.getMonth() + 1)).slice(-2) + '-' + ('0' + this.DateObj.getDate()).slice(-2);
 
   constructor(private urlservice: UrlService, private service: MensaService) {
     this.location = this.cafeMensa2;

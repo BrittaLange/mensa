@@ -11,11 +11,12 @@ export class MenuListComponent implements OnInit {
 
   title = "Menü-Liste";
 
+  // When app only shows menus for todays date
   public today: number = Date.now();
 
   menus =  [] as any;
 
-  // Wenn top-bar die Location sendet, muss die Methode getData muss vom Service gepusht werden.
+  // Wenn top-bar die Location sendet, pusht die Methode getData vom Service die neuen Daten an die menu-list.
 
   constructor(private service: MensaService) {
    }
