@@ -47,7 +47,8 @@ export class MensaService {
       for (let i = 0; i < this.resultMeals.length; i++){
         this.menus[i] = new Menu(this.resultLanes[i], this.resultMeals[i], this.resultPrices[i]);
       }   
-    });
+    })
+    .catch(error => alert(error.message));
     return this.menus;
   }
 
