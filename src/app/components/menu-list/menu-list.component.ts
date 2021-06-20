@@ -11,7 +11,7 @@ export class MenuListComponent implements OnInit {
 
   title = "Menü-Liste";
 
-  // When app only shows menus for todays date
+  // App shows menus for today only
   public today: number = Date.now();
 
   menus =  [] as any;
@@ -22,9 +22,9 @@ export class MenuListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('init menulist');
+    //console.log('init menulist');
     this.menus = this.service.getData();
-    console.log(this.menus);
-    console.log(typeof(this.menus));
+    //console.log(this.menus);
+    //console.log(typeof(this.menus));
   }  
 }

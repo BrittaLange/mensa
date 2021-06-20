@@ -22,7 +22,6 @@ export class UrlService {
   public getLocation(loc: Locus) {
     this.idOfLocation = loc.id;
     this.url = "https://sls.api.stw-on.de/v1/location/"+ this.idOfLocation + "/menu/"+ this.today + "?time=noon";
-    console.log(this.idOfLocation);
     return this.idOfLocation;
   }
   public getUrl() {

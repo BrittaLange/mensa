@@ -42,7 +42,7 @@ export class TopBarComponent implements OnInit {
     this.setButtonColor(loc);
     this.location = loc;
     this.urlservice.getLocation(this.location);
-    console.log(this.location);
+    //console.log(this.location);
     this.service.getData();
   }
 
