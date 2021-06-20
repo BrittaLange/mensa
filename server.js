@@ -1,27 +1,19 @@
-
+function requireHTTPS(req, res, next) {
+    // The 'x-forwarded-proto' check is for Heroku
+    if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
+        return res.redirect('https://' + req.get('host') + req.url);
+    }
+    next();
+}
 
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
-const port = 3000;
-const dirSSL = '/home/britta/Dokumente/sslcert/'
+const app = express();
 
-var key = fs.readFileSync(dirSSL + 'selfsigned.key');
-var cert = fs.readFileSync(dirSSL + 'selfsigned.crt');
-var options = {
-  key: key,
-  cert: cert
-};
-
-app = express();
-
+app.use(requireHTTPS);
 app.use(express.static('./dist/mensa'));
 
 app.get('/*', (req, res) =>
     res.sendFile('index.html', {root: 'dist/mensa/'}),
 );
-var server = https.createServer(options, app);
 
-server.listen(port, () => {
-  console.log("server starting on port : " + port)
-});
+app.listen(process.env.PORT || 8080);
