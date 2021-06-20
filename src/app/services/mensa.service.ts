@@ -76,23 +76,23 @@ export class MensaService {
   private findProperty(rootObj: any, objToFind: any, label: any, result:any[]) {        
 
     for(var elements in rootObj){
-        if(typeof rootObj[elements] === 'object') 
-        {
-            if (elements === objToFind){
-                if(Array.isArray(rootObj[elements])){
-                    //console.log('ich bin ein array ');
-                    for(let i = 0; i < rootObj[elements].length; i++){
-                        //console.log(rootObj[elements][i][label]);
-                        result.push(rootObj[elements][i][label]);
-                    }
-                }
-                else{  
-                    //console.log('ich bin kein array');
-                    result.push(rootObj[elements][label]);
-                }
+      if(typeof rootObj[elements] === 'object') 
+      {
+        if (elements === objToFind){
+          if(Array.isArray(rootObj[elements])){
+            //console.log('ich bin ein array ');
+            for(let i = 0; i < rootObj[elements].length; i++){
+              //console.log(rootObj[elements][i][label]);
+              result.push(rootObj[elements][i][label]);
             }
-            this.findProperty(rootObj[elements], objToFind, label, result);
-        }          
+          }
+          else{  
+            //console.log('ich bin kein array');
+            result.push(rootObj[elements][label]);
+          }
+        }
+        this.findProperty(rootObj[elements], objToFind, label, result);
+      }          
     }
-  };
+  }
 }
