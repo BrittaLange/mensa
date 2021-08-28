@@ -1,5 +1,9 @@
 # Mensa
 
+See deployed web app on heroku: https://mensa-angular-app.herokuapp.com/
+
+# About Angular
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.11.
 
 ## Development server
